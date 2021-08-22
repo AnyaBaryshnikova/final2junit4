@@ -180,13 +180,18 @@ public class SearchResultsPage extends BasePage {
                 break;
             }
             ++pageIndex;
-            WebElement page = driverManager.getDriver()
-                    .findElement(By.xpath("//div[@data-widget='megaPaginator']//div[@qa-id='prevButton' " +
-                            "or @qa-id='next']/../div[not(@qa-id)]//a[@href and text()='" + pageIndex + "']"));
 
-            wait.ignoring(StaleElementReferenceException.class);
-            wait.ignoring(NoSuchElementException.class);
-            wait.until(checkLengthAttribute(page, "class", 5));
+            try {
+                WebElement page = driverManager.getDriver()
+                        .findElement(By.xpath("//div[@data-widget='megaPaginator']//div[@qa-id='prevButton' " +
+                                "or @qa-id='next']/../div[not(@qa-id)]//a[@href and text()='" + pageIndex + "']"));
+
+                wait.ignoring(StaleElementReferenceException.class);
+                wait.ignoring(NoSuchElementException.class);
+                wait.until(checkLengthAttribute(page, "class", 5));
+            }
+            catch(NoSuchElementException e)
+            {}
             waitUtilElementToBeVisible(checkOpen);
 
 
