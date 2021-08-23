@@ -2,6 +2,7 @@ package org.example.steps;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.ru.И;
+import io.qameta.allure.Allure;
 import org.example.managers.PageManager;
 
 public class SearchResultsPageStep {

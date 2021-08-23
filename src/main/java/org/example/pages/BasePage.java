@@ -20,7 +20,8 @@ import java.util.Map;
 public class BasePage {
 
     //имена товаров
-    protected static Map<String, Integer> itemNames = new HashMap<>();
+    protected static List<String> itemNames = new ArrayList<>();
+
 
     boolean frameFlag = false;
     /**

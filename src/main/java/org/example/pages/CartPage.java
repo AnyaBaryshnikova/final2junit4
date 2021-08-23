@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CartPage extends BasePage {
@@ -99,12 +101,50 @@ public class CartPage extends BasePage {
      * @return
      */
     public CartPage checkItemsInCart(){
-        for(int i = 0; i < cartElementsList.size(); ++i){
-            Assert.assertTrue("Корзина содержит не те элементы, которые добавляли", itemNames.containsKey(cartElementsList.get(i).getText()));
+        String str = itemNames.toString();
+        for(int i = 0; i < cartElementsList.size(); ++i)
+            Assert.assertTrue("Корзина содержит не те элементы, которые добавляли",
+                    str.contains(cartElementsList.get(i).getText()));
 
-        }
+
+
+//            Assert.assertTrue("Корзина содержит не те элементы, которые добавляли", itemNames.stream()
+//                    .anyMatch(el->el.contains(cartElementsList.get(i).getText())));
+
+
         return this;
     }
+
+    public String getItemList(){
+        final String[] str = {""};
+        itemNames.stream().forEach(entry -> {
+            str[0] += (entry + "\n");
+        });
+
+
+
+       // str[0] += "\nСамый дорогой товар: " + itemNames.get(findMax());
+
+        return str[0];
+    }
+
+//    private int findMax(){
+//        List<Integer> temp = new ArrayList<>();
+//        for(int i = 0; i < itemNames.size(); ++i){
+//            temp.add(Integer.parseInt(itemNames.get(i).substring(itemNames.get(i).indexOf("цена: "))));
+//        }
+//
+//        int index = 0;
+//        int max = temp.get(0);
+//        for(int i = 1; i < temp.size(); ++i){
+//            if(temp.get(i) > max){
+//                max = temp.get(i);
+//                index = i;
+//            }
+//
+//        }
+//        return index;
+//    }
 
 }
 
