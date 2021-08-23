@@ -177,9 +177,6 @@ public class BasePage {
     }
 
 
-
-
-
     public static ExpectedCondition<Boolean> checkLengthAttribute(final WebElement element,
                                                                final String attribute,
                                                                final int value) {

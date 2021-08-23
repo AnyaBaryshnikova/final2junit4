@@ -106,46 +106,15 @@ public class CartPage extends BasePage {
             Assert.assertTrue("Корзина содержит не те элементы, которые добавляли",
                     str.contains(cartElementsList.get(i).getText()));
 
-
-
-//            Assert.assertTrue("Корзина содержит не те элементы, которые добавляли", itemNames.stream()
-//                    .anyMatch(el->el.contains(cartElementsList.get(i).getText())));
-
-
         return this;
     }
 
     public String getItemList(){
         final String[] str = {""};
-        itemNames.stream().forEach(entry -> {
-            str[0] += (entry + "\n");
-        });
-
-
-
-       // str[0] += "\nСамый дорогой товар: " + itemNames.get(findMax());
+        itemNames.forEach(entry -> str[0] += (entry + "\n"));
 
         return str[0];
     }
-
-//    private int findMax(){
-//        List<Integer> temp = new ArrayList<>();
-//        for(int i = 0; i < itemNames.size(); ++i){
-//            temp.add(Integer.parseInt(itemNames.get(i).substring(itemNames.get(i).indexOf("цена: "))));
-//        }
-//
-//        int index = 0;
-//        int max = temp.get(0);
-//        for(int i = 1; i < temp.size(); ++i){
-//            if(temp.get(i) > max){
-//                max = temp.get(i);
-//                index = i;
-//            }
-//
-//        }
-//        return index;
-//    }
-
 }
 
 

@@ -194,9 +194,6 @@ public class SearchResultsPage extends BasePage {
             {}
             waitUtilElementToBeVisible(checkOpen);
 
-
-
-
         }
 
         return this;
@@ -254,36 +251,6 @@ public class SearchResultsPage extends BasePage {
         }
 
         return this;
-
-
-
-//        scrollUp();
-//
-//        for (int i = 0; i < listItems.size(); ++i) {
-//            if ((i + 1) % 2 != 0)
-//                continue;
-//
-//            scrollWithOffset(listItems.get(i), 0, -200);
-//            WebElement button = addToCart(listItems.get(i));
-//            if (button != null) {
-//                ++itemsAmount;
-//                wait.until(ExpectedConditions.textToBePresentInElement(cartAmount, itemsAmount + ""));
-//                addItemName(listItems.get(i));
-//            }
-//            if (itemsAmount == n)
-//                return this;
-//        }
-//
-//        if(nextBtn.isEnabled())
-//        {
-//            nextBtn.click();
-//            waitUtilElementToBeVisible(checkOpen);
-//            selectEvenItems(n - itemsAmount);
-//
-//        }
-
-
-
     }
 
     public CartPage redirectToCart() {
@@ -351,6 +318,6 @@ public class SearchResultsPage extends BasePage {
         WebElement elName = element.findElement(By.xpath(".//div[contains(@style, 'max-width: 50')]//a[not(contains(text(), 'отзыв'))]/span/span"));
         WebElement elPrice = element.findElement(By.xpath(".//div[3]//span[@style='color: rgb(249, 17, 85);' or @style='color: rgb(0, 26, 52);'][1]"));
         int price = Integer.parseInt(elPrice.getText().replaceAll("[^\\d.]", ""));
-        itemNames.add(elName.getText() + "  цена: " + price);
+        itemNames.add(elName.getText() + "      цена: " + price);
     }
 }
